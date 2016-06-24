@@ -7,7 +7,8 @@
             @foreach (var item in Model.Lots)
             {
                 <tr>
-                    <td>@Html.Image(item.Image, "LotImage", "100", "120")</td>
+                    <td>@Html.Image(@Url.Action("GetImage", "Home",
+                        new { id = item.Id }), "LotImage", "100", "120")</td>
                     <td>
                         <p><strong> @Html.DisplayNameFor(x => item.Name):</strong>@Html.DisplayFor(x => item.Name)</p>
                         <p><strong> @Html.DisplayNameFor(x => item.Category):</strong>@Html.DisplayFor(x => item.Category)</p>

@@ -91,5 +91,18 @@ namespace MVC.Controllers
             }
             return RedirectToAction("LotPage", new {id = lotId});
         }
+
+        public FileContentResult GetImage(int id)
+        {
+            var lot = lotService.GetById(id);
+
+            if (lot?.Image != null)
+            {
+                return File(lot.Image, "image");
+            }
+
+            var img = System.IO.File.ReadAllBytes(Request.PhysicalApplicationPath + "/Content/Images/noimage.png");
+            return File(img, "image");
+        }
     }
 }
